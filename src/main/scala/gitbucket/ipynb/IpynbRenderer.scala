@@ -102,7 +102,7 @@ class IpynbRenderer extends Renderer {
         s"""<div class="ipynb-innercell"><div class="ipynb-prompt ipynb-input-prompt">In $countStr</div><div class="ipynb-rendered ipynb-rendered-code">$rendered</div></div>$outputDiv"""
       case "markdown" =>
         val md = cell.source.mkString("")
-        val rendered = markdown(md, repository, enableWikiLink, enableRefsLink, enableLineBreaks = true)
+        val rendered = markdown(md, repository, repository.repository.defaultBranch, enableWikiLink, enableRefsLink, enableLineBreaks = true)
         s"""<div class="ipynb-innercell"><div clss="ipynb-prompt ipynb-input-prompt"></div><div class="ipynb-prompt ipynb-input-prompt"></div><div calss="ipynb-rendered ipynb-rendered-markdown">$rendered</div></div>"""
       case _ =>
         s"""<div class="ipynb-prompt ipynb-input-prompt">???</div><div class="ipynb-rendered ipynb-rendered-unknown"><code><pre>${cell.source.mkString("")}</pre></code></div>"""
